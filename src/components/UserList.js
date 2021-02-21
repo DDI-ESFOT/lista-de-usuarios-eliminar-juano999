@@ -13,6 +13,7 @@ const UserList = ({ users }) => {
   const handleAddUser = (event) => {
     // console.log("event", event);
     console.log("Añadir");
+
     const newName = document.querySelector("#name").value;
     const newLastname = document.querySelector("#lastname").value;
     const newUser = {
@@ -30,13 +31,23 @@ const UserList = ({ users }) => {
     document.querySelector("#lastname").value = "";
   };
 
+  const handleRemoveUser = (event) => {
+    
+    usersList.splice(usersList.length - 1, 1);
+    setUsersList((prevUsersList) => {
+      // Spread operator
+      return [...prevUsersList];
+    });
+    
+  };
+
   return (
     <>
       <h1>Lista de usuarios ({usersList.length} usuarios)</h1>
       <input type="text" id="name" placeholder="Ingrese un nombre" />
       <input type="text" id="lastname" placeholder="Ingrese un apellido" />
       <button onClick={handleAddUser}>Añadir</button>
-      <button>Eliminar el último usuario</button>
+      <button onClick={handleRemoveUser}>Eliminar el último usuario</button>
       <ul>
         {usersList.map((user, index) => {
           return <li key={Math.random()}>{formatName(user)}</li>;

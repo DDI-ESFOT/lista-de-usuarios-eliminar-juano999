@@ -12,6 +12,7 @@ const Counter = () => {
   //
   // // const one = arr[0];
   // // const two = arr[1];
+  
   // // const three = arr[2];
   // // const four = arr[3];
   // // const five = arr[4];
